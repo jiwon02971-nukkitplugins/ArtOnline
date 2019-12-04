@@ -25,7 +25,7 @@ public class Profiler implements Listener {
 
         $instance = this;
 
-        folder = plugin.getDataFolder();
+        folder = new File(plugin.getDataFolder() + "profiles");
         folder.mkdirs();
 
         configs = new HashMap<>();
@@ -55,7 +55,7 @@ public class Profiler implements Listener {
             configs.put(player, config);
             rc(player);
             reloadProfileList();
-	}
+        }
         return config;
     }
 

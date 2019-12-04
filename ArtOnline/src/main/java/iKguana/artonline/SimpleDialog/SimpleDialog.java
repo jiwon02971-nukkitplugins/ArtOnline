@@ -41,24 +41,24 @@ public class SimpleDialog {
 	public static void sendDialog(Object clz, String name, Player player, Type type, Object data) {
 		if (player instanceof Player) {
 			if (type == Type.ONLY_TEXT) {
-				FormWindowSimple window = new FormWindowSimple(ST.getMessage("only_text.title"), (String) data);
+				FormWindowSimple window = new FormWindowSimple(SimpleDialogConfig.getMessage("only_text.title"), (String) data);
 				sendDialog(null, null, player, window);
 			} else if (type == Type.FILTERING) {
 				ArrayList<String> list = (data instanceof ArrayList<?> ? (ArrayList<String>) data : toStringList(Server.getInstance().getOnlinePlayers().values()));
 				if (list.size() <= 10) {
 					sendDialog(clz, name, player, Type.FILTERING_SKIP, data);
 				} else {
-					FormWindowModal window = new FormWindowModal(ST.getMessage("filtering.title"), ST.getMessage("filtering.ask_use_filter"), ST.getMessage("filtering.b_yes"), ST.getMessage("filtering.b_no"));
+					FormWindowModal window = new FormWindowModal(SimpleDialogConfig.getMessage("filtering.title"), SimpleDialogConfig.getMessage("filtering.ask_use_filter"), SimpleDialogConfig.getMessage("filtering.b_yes"), SimpleDialogConfig.getMessage("filtering.b_no"));
 					if (list.size() == 0)
-						window.setContent(window.getContent() + "\n\n" + ST.getMessage("filtering.no_element"));
+						window.setContent(window.getContent() + "\n\n" + SimpleDialogConfig.getMessage("filtering.no_element"));
 					
 					sendDialog(receiver, "form_filter_player", player, window, new Object[] { clz, name, list });
 				}
 			} else if (type == Type.FILTERING_SKIP) {
 				ArrayList<String> list = (data instanceof ArrayList<?> ? (ArrayList<String>) data : toStringList(Server.getInstance().getOnlinePlayers().values()));
-				FormWindowSimple window = new FormWindowSimple(ST.getMessage("filtering.title"), ST.getMessage("filtering.press_element"));
+				FormWindowSimple window = new FormWindowSimple(SimpleDialogConfig.getMessage("filtering.title"), SimpleDialogConfig.getMessage("filtering.press_element"));
 				if (list.size() == 0)
-					window.setContent(window.getContent() + "\n\n" + ST.getMessage("filtering.no_element"));
+					window.setContent(window.getContent() + "\n\n" + SimpleDialogConfig.getMessage("filtering.no_element"));
 				
 				for (String element : list)
 					window.addButton(new ElementButton(element));
@@ -74,18 +74,18 @@ public class SimpleDialog {
 		Object[] arr = (Object[]) data;
 		if (event.getWindow() instanceof FormWindowModal) {
 			if (((FormResponseModal) event.getResponse()).getClickedButtonId() == 0) {
-				FormWindowCustom window = new FormWindowCustom(ST.getMessage("filtering.title"));
-				window.addElement(new ElementInput(ST.getMessage("filtering.input_name")));
+				FormWindowCustom window = new FormWindowCustom(SimpleDialogConfig.getMessage("filtering.title"));
+				window.addElement(new ElementInput(SimpleDialogConfig.getMessage("filtering.input_name")));
 				SimpleDialog.sendDialog(this, "form_filter_player", event.getPlayer(), window, data);
 			} else {
-				FormWindowSimple window = new FormWindowSimple(ST.getMessage("filtering.title"), ST.getMessage("filtering.press_element"));
+				FormWindowSimple window = new FormWindowSimple(SimpleDialogConfig.getMessage("filtering.title"), SimpleDialogConfig.getMessage("filtering.press_element"));
 				for (String element : (ArrayList<String>) arr[2])
 					window.addButton(new ElementButton(element));
 				SimpleDialog.sendDialog(arr[0], (String) arr[1], event.getPlayer(), window);
 			}
 		} else if (event.getWindow() instanceof FormWindowCustom) {
 			String str = ((FormResponseCustom) event.getResponse()).getInputResponse(0);
-			FormWindowSimple window = new FormWindowSimple(ST.getMessage("filtering.title"), ST.getMessage("filtering.press_element"));
+			FormWindowSimple window = new FormWindowSimple(SimpleDialogConfig.getMessage("filtering.title"), SimpleDialogConfig.getMessage("filtering.press_element"));
 			for (String element : (ArrayList<String>) arr[2])
 				if (element.toLowerCase().startsWith(str.toLowerCase()))
 					window.addButton(new ElementButton(element));
