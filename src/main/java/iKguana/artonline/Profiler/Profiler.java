@@ -6,7 +6,7 @@ import cn.nukkit.event.player.PlayerJoinEvent;
 import cn.nukkit.event.player.PlayerQuitEvent;
 import cn.nukkit.utils.Config;
 import cn.nukkit.utils.ConfigSection;
-import iKguana.artonline.ArtOnlilne;
+import iKguana.artonline.ArtOnline;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class Profiler implements Listener {
     public HashMap<String, Config> configs;
     private File folder;
 
-    public Profiler(ArtOnlilne plugin) {
+    public Profiler(ArtOnline plugin) {
         if ($instance != null)
             return;
 

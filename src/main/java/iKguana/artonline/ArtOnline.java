@@ -10,7 +10,7 @@ import iKguana.artonline.SimpleDialog.SimpleDialogListener;
 import java.io.File;
 import java.io.InputStream;
 
-public class ArtOnlilne extends PluginBase {
+public class ArtOnline extends PluginBase {
     @Override
     public void onEnable(){
         getDataFolder().mkdirs();

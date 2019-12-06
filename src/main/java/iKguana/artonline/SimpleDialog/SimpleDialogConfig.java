@@ -1,19 +1,15 @@
 package iKguana.artonline.SimpleDialog;
 
-import cn.nukkit.Server;
 import cn.nukkit.utils.Config;
-import cn.nukkit.utils.Utils;
-import iKguana.artonline.ArtOnlilne;
+import iKguana.artonline.ArtOnline;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 
 public class SimpleDialogConfig {
-    private static ArtOnlilne $plugin;
+    private static ArtOnline $plugin;
     private static Config cfg;
 
-    public SimpleDialogConfig(ArtOnlilne plugin) {
+    public SimpleDialogConfig(ArtOnline plugin) {
         $plugin = plugin;
 
         File path = new File(plugin.getDataFolder() + "SimpleDialog");
