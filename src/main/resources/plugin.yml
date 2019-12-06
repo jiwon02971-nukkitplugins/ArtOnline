@@ -1,0 +1,7 @@
+name: ArtOnline
+main: iKguana.artonline.ArtOnline
+version: "1.0.0"
+
+api: "1.0.0"
+
+auther: iKguana
