@@ -3,6 +3,7 @@ package iKguana.artonline;
 import cn.nukkit.Server;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.Utils;
+import iKguana.artonline.Economy.MoneyAPI;
 import iKguana.artonline.Profiler.Profiler;
 import iKguana.artonline.SimpleDialog.SimpleDialogConfig;
 import iKguana.artonline.SimpleDialog.SimpleDialogListener;
@@ -10,7 +11,7 @@ import iKguana.artonline.SimpleDialog.SimpleDialogListener;
 import java.io.File;
 import java.io.InputStream;
 
-public class ArtOnlilne extends PluginBase {
+public class ArtOnline extends PluginBase {
     @Override
     public void onEnable(){
         getDataFolder().mkdirs();
@@ -18,6 +19,9 @@ public class ArtOnlilne extends PluginBase {
         new Profiler(this);
 
         new SimpleDialogConfig(this);
+
+        new MoneyAPI(this);
+
         getServer().getPluginManager().registerEvents(new SimpleDialogListener(), this);
     }
 
