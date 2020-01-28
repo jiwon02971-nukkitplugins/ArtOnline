@@ -25,7 +25,7 @@ public class Profiler implements Listener {
 
         $instance = this;
 
-        folder = new File(plugin.getDataFolder() + "profiles");
+        folder = new File(plugin.getDataFolder(), "profiles");
         folder.mkdirs();
 
         configs = new HashMap<>();

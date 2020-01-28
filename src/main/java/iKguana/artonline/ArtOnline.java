@@ -3,6 +3,7 @@ package iKguana.artonline;
 import cn.nukkit.Server;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.Utils;
+import iKguana.artonline.LogAPI.LogAPI;
 import iKguana.artonline.Profiler.Profiler;
 import iKguana.artonline.SimpleDialog.SimpleDialogConfig;
 import iKguana.artonline.SimpleDialog.SimpleDialogListener;
@@ -12,10 +13,13 @@ import java.io.InputStream;
 
 public class ArtOnline extends PluginBase {
     @Override
-    public void onEnable(){
+    public void onEnable() {
         getDataFolder().mkdirs();
+        saveDefaultConfig();
 
-        new Profiler(this);
+        new LogAPI();
+        if (getConfig().getBoolean("enable-Profiler"))
+            new Profiler(this);
 
         new SimpleDialogConfig(this);
         getServer().getPluginManager().registerEvents(new SimpleDialogListener(), this);
@@ -40,7 +44,7 @@ public class ArtOnline extends PluginBase {
     }
 
     @Override
-    public void onDisable(){
+    public void onDisable() {
         Profiler.getInstance().saveAll();
     }
 }

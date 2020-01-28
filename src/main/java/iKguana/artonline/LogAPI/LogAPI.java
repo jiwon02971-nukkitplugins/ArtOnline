@@ -15,10 +15,10 @@ public class LogAPI {
 
     public LogAPI() {
         logFolder = new File(Server.getInstance().getDataPath(), "logs-custom");
-        logFolder.mkdirs();
     }
 
     public static void saveLog(String fname, String data) {
+        logFolder.mkdirs();
         (new File(logFolder, fname)).mkdirs();
 
         String yyyyMMdd = new SimpleDateFormat("yyyyMMdd", Locale.KOREA).format(new Date());
