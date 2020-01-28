@@ -1,4 +1,4 @@
-## 1. pom.xml에 등록하기
+## pom.xml에 등록하기
 ```
 <repositories>
 	<repository>
